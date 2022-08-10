@@ -1,0 +1,37 @@
+<div class="animate__animated animate__fadeIn animate__fater">
+    <h2>By Country</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <app-country-input
+                (onEnter)="search($event)"
+                (onDebounce)="sugerences($event)"
+                placeholder="Searching by country..."
+            ></app-country-input>
+        </div>
+    </div>
+
+    <ul class="list-group" *ngIf="showSuggested">
+        <li *ngFor="let suggested of suggestedCountries"
+            class="list-group-item list-group-item-action">
+            <a class="nav-link"
+                [routerLink]="['/country', suggested.alpha2Code]">{{ suggested.name }}</a>
+        </li>
+        <li class="list-group-item list-group-item-action">
+            <a class="nav-link" (click)="search(query)">Buscar "{{ query }}"</a>
+        </li>
+    </ul>
+
+    <hr>
+</div>
+
+<div class="alert alert-danger" *ngIf="searchFailed">
+    We haven't found nothing with that query : <strong>{{ query }}</strong>
+</div>
+
+<div class="row" *ngIf="countries.length > 0">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>

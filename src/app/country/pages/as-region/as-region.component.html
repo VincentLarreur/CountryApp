@@ -1,0 +1,31 @@
+<div class="animate__animated animate__fadeIn animate__fater">
+    <h2>By Region</h2>
+    <hr>
+
+    <div class="animate__animate animate__fadeIn animate__fater">
+
+    <div class="row">
+        <div class="col">
+            <button 
+                *ngFor="let region of regions"
+                [class]="getClase(region)"
+                (click)="search(region)"
+            >
+                {{ region | titlecase }}
+            </button>
+
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+<div class="alert alert-danger" *ngIf="searchFailed">
+    We haven't found nothing with that query : <strong>{{ regionActiva }}</strong>
+</div>
+
+<div class="row" *ngIf="countries.length > 0">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>

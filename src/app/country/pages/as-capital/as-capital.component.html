@@ -1,0 +1,25 @@
+<div class="animate__animated animate__fadeIn animate__fater">
+    <h2>By Capital</h2>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <app-country-input
+                (onEnter)="search($event)"
+                (onDebounce)="search($event)"
+                placeholder="Searching by capital..."
+            ></app-country-input>
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="alert alert-danger" *ngIf="searchFailed">
+    We haven't found nothing with that query : <strong>{{ query }}</strong>
+</div>
+
+<div class="row" *ngIf="countries.length > 0">
+    <div class="col">
+        <app-country-table [countries]="countries"></app-country-table>
+    </div>
+</div>

@@ -6,6 +6,6 @@
 
 Small Angular App to find country informacions
 
-<a href="https://angular-country-app.netlify.app/">Demo</a>
+<a href="https://angular-country-appli.netlify.app/">Demo</a>
 
 </div>
